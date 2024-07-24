@@ -1,13 +1,8 @@
 <script setup>
-const SLing = ref([])
+import { ref } from 'vue'
 
-const linguagens = ref([
-  { id: 'Python', name: 'Python' },
-  { id: 'JavaScript', name: 'JavaScript' },
-  { id: 'Java', name: 'Java' },
-  { id: 'C++', name: 'C++' },
-  { id: 'Ruby', name: 'Ruby' }
-]);
+const SLing = ref([]);
+defineProps(["lings"])
 </script>
 
 <template>

@@ -1,17 +1,8 @@
 <script setup>
+import { ref } from 'vue'
+
 const SHob = ref([])
-const hobs = ref([
-  { id: 'Futebol', name: 'Futebol' },
-  { id: 'Basquete', name: 'Basquete' },
-  { id: 'Volei', name: 'Volei' },
-  { id: 'Tênis', name: 'Tênis' },
-  { id: 'Pesca', name: 'Pesca' },
-  { id: 'Pintura', name: 'Pintura' },
-  { id: 'Livros', name: 'Livros' },
-  { id: 'Robotica', name: 'Robotica' },
-  { id: 'Programação', name: 'Programação' },
-  { id: 'Natação', name: 'Natação' }
-]);
+defineProps(["hobs"])
 </script>
 
 <template>

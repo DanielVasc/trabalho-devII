@@ -1,26 +1,76 @@
 <script setup>
 import { ref } from 'vue'
-import infos from './components/info.vue';
-import estados from './components/estado.vue';
-import hobs from './components/hob.vue';
-import lings from './components/linguagem.vue';
+import infoComponent from './components/info.vue'
+import estadosComponent from './components/estado.vue'
+import hobComponent from './components/hob.vue'
+import lingsComponent from './components/linguagem.vue'
 
+ let senha = ref('senha')
+ let Csenha = ref('Csenha')
 let bio = ref('')
+
+const estados = ref([
+  { id: 'Acre', name: 'AC' },
+  { id: 'Alagoas', name: 'AL' },
+  { id: 'Amapá', name: 'AP' },
+  { id: 'Amazonas', name: 'AM' },
+  { id: 'Bahia', name: 'BA' },
+  { id: 'Ceará', name: 'CE' },
+  { id: 'Distrito Federal', name: 'DF' },
+  { id: 'Espírito Santo', name: 'ES' },
+  { id: 'Goiás', name: 'GO' },
+  { id: 'Maranhão', name: 'MA' },
+  { id: 'Mato Grosso', name: 'MT' },
+  { id: 'Mato Grosso do Sul', name: 'MS' },
+  { id: 'Minas Gerais', name: 'MG' },
+  { id: 'Pará', name: 'PA' },
+  { id: 'Paraíba', name: 'PB' },
+  { id: 'Paraná', name: 'PR' },
+  { id: 'Pernambuco', name: 'PE' },
+  { id: 'Piauí', name: 'PI' },
+  { id: 'Rio de Janeiro', name: 'RJ' },
+  { id: 'Rio Grande do Norte', name: 'RN' },
+  { id: 'Rio Grande do Sul', name: 'RS' },
+  { id: 'Rondônia', name: 'RO' },
+  { id: 'Roraima', name: 'RR' },
+  { id: 'Santa Catarina ', name: 'SC' },
+  { id: 'São Paulo', name: 'SP' },
+  { id: 'Sergipe', name: 'SE' },
+  { id: 'Tocantins', name: 'TO' }
+]);
+
+const hobs = ref([
+  { id: 'Futebol', name: 'Futebol' },
+  { id: 'Basquete', name: 'Basquete' },
+  { id: 'Volei', name: 'Volei' },
+  { id: 'Tênis', name: 'Tênis' },
+  { id: 'Pesca', name: 'Pesca' },
+  { id: 'Pintura', name: 'Pintura' },
+  { id: 'Livros', name: 'Livros' },
+  { id: 'Robotica', name: 'Robotica' },
+  { id: 'Programação', name: 'Programação' },
+  { id: 'Natação', name: 'Natação' }
+]);
+
+const lings = ref([
+  { id: 'Python', name: 'Python' },
+  { id: 'JavaScript', name: 'JavaScript' },
+  { id: 'Java', name: 'Java' },
+  { id: 'C++', name: 'C++' },
+  { id: 'Ruby', name: 'Ruby' }
+]);
 
 const Vsenha = () => {
   if (senha.value === Csenha.value) {
     return true
-  } 
-  
-  else {
+  } else {
     alert('As senhas não são iguais')
     return false
   }
 }
-
 const enviar = () => {
   if (Vsenha()) {
-    const info = {
+    const resposta = {
       nome: nome.value,
       email: email.value,
       nascimento: nascimento.value,
@@ -29,17 +79,20 @@ const enviar = () => {
       linguagens: SLing.value,
       biografia: bio.value
     }
-    alert(`Informações: \n${JSON.stringify(info, null, 2)}`)
+    alert(`Informações: \n${JSON.stringify(resposta, null, 2)}`)
   }
 }
 </script>
 
 <template>
-  <form @submit.prevent="enviar">
+  <form @submit.prevent="enviar"> 
+    <infoComponent :appCsenha="Csenha" :appsenha="senha"/>
+    <estadosComponent :estados="estados" />
+    <hobComponent :hobs="hobs" />
+    <lingsComponent :lings="lings" />
     <p>Escreva sua biografia</p>
-    <textarea v-model="bio" />
+    <textarea v-model="bio"></textarea>
     <p style="white-space: pre-line"></p>
-
     <div class="col-12">
       <button class="btn btn-primary" type="submit">Enviar</button>
     </div>
@@ -47,7 +100,6 @@ const enviar = () => {
 </template>
 
 <style>
-
 button[type='submit'] {
   background-color: #4d504d;
   color: #fff;

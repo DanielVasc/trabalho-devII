@@ -4,8 +4,7 @@ import { ref } from 'vue'
 let nome = ref('')
 let email = ref('')
 let nascimento = ref(null)
-let senha = ref('senha')
-let Csenha = ref('Csenha')
+defineProps(["appsenha", "appCsenha"])
 </script>
 
 <template>
