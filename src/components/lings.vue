@@ -1,14 +1,14 @@
 <script setup>
 import { ref } from 'vue'
 
-const SLing = ref([]);
+const SLing = ref([])
 defineProps(["lings"])
 </script>
 
 <template>
-  <div class="ling">
+  <div class="lings">
     <label>Quais as linguagens que voce conhece</label>
-    <div v-for="(ling, index) in linguagens" :key="index">
+    <div v-for="(ling, index) in lings" :key="index">
       <input type="checkbox" v-model="SLing" :value="ling.id" :id="ling.id" />
       <label :for="ling.id">{{ ling.name }}</label>
     </div>
@@ -17,7 +17,7 @@ defineProps(["lings"])
 </template>
 
 <style>
-.ling {
+.lings {
   display: flex;
   flex-direction: column;
   align-items: center;

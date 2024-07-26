@@ -3,11 +3,12 @@ import { ref } from 'vue'
 import infoComponent from './components/info.vue'
 import estadosComponent from './components/estado.vue'
 import hobComponent from './components/hob.vue'
-import lingsComponent from './components/linguagem.vue'
+import lingsComponent from './components/lings.vue'
 
  let senha = ref('senha')
  let Csenha = ref('Csenha')
-let bio = ref('')
+ let bio = ref('')
+
 
 const estados = ref([
   { id: 'Acre', name: 'AC' },
@@ -76,7 +77,7 @@ const enviar = () => {
       nascimento: nascimento.value,
       estado: SEst.value,
       hob: SHob.value,
-      linguagens: SLing.value,
+      lings: SLing.value,
       biografia: bio.value
     }
     alert(`Informações: \n${JSON.stringify(resposta, null, 2)}`)
